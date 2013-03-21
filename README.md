@@ -14,7 +14,7 @@ Usage is very simple:
 ```javascript
 	var client = new MediaBrowser.ApiClient("http:", "localhost", 8096, "My app name");
 	
-	client.getAllUsers().done(function(users) {
+	client.getUsers().done(function(users) {
 	    
 	    // Do something with the list of returned users
 	
