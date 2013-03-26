@@ -1,4 +1,8 @@
-﻿MediaBrowser.ApiClient = function ($, navigator, JSON, WebSocket, setTimeout) {
+﻿if (!window.MediaBrowser) {
+    window.MediaBrowser = {};
+}
+
+MediaBrowser.ApiClient = function ($, navigator, JSON, WebSocket, setTimeout) {
 
     /**
      * Creates a new api client instance
@@ -1940,7 +1944,3 @@ MediaBrowser.SHA1 = function (msg) {
     jQuery.browser = browser;
 
 })(jQuery, window);
-
-if (!window.MediaBrowser) {
-    window.MediaBrowser = {};
-}
