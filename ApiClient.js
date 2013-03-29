@@ -1587,7 +1587,7 @@ MediaBrowser.ApiClient = function ($, navigator, JSON, WebSocket, setTimeout) {
                 throw new Error("null itemId");
             }
 
-            var url = self.getUrl("Users/" + userId + "/PlayedItems/" + itemId;
+            var url = self.getUrl("Users/" + userId + "/PlayedItems/" + itemId);
 
             var method = wasPlayed ? "POST" : "DELETE";
 
