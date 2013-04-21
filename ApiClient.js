@@ -896,6 +896,24 @@ MediaBrowser.ApiClient = function ($, navigator, JSON, WebSocket, setTimeout) {
         };
 
         /**
+         * Gets an artist
+         */
+        self.getArtist = function (name) {
+
+            if (!name) {
+                throw new Error("null name");
+            }
+
+            var url = self.getUrl("Artists/" + encodeName(name));
+
+            return self.ajax({
+                type: "GET",
+                url: url,
+                dataType: "json"
+            });
+        };
+
+        /**
          * Gets a year
          */
         self.getYear = function (year) {
@@ -1119,6 +1137,41 @@ MediaBrowser.ApiClient = function ($, navigator, JSON, WebSocket, setTimeout) {
             };
 
             var url = "Genres/" + encodeName(name) + "/Images/" + options.type;
+
+            if (options.index != null) {
+                url += "/" + options.index;
+            }
+
+            // Don't put these on the query string
+            delete options.type;
+            delete options.index;
+
+            return self.getUrl(url, options);
+        };
+
+        /**
+         * Constructs a url for a artist image
+         * @param {String} name
+         * @param {Object} options
+         * Options supports the following properties:
+         * width - download the image at a fixed width
+         * height - download the image at a fixed height
+         * maxWidth - download the image at a maxWidth
+         * maxHeight - download the image at a maxHeight
+         * quality - A scale of 0-100. This should almost always be omitted as the default will suffice.
+         * For best results do not specify both width and height together, as aspect ratio might be altered.
+         */
+        self.getArtistImageUrl = function (name, options) {
+
+            if (!name) {
+                throw new Error("null name");
+            }
+
+            options = options || {
+
+            };
+
+            var url = "Artists/" + encodeName(name) + "/Images/" + options.type;
 
             if (options.index != null) {
                 url += "/" + options.index;
@@ -1525,6 +1578,29 @@ MediaBrowser.ApiClient = function ($, navigator, JSON, WebSocket, setTimeout) {
         };
 
         /**
+            Gets artists from an item
+        */
+        self.getArtists = function (userId, options) {
+
+            if (!userId) {
+                throw new Error("null userId");
+            }
+
+            var parentId = options.parentId || "root";
+
+            // Don't put these on the query string
+            delete options.parentId;
+
+            var url = self.getUrl("Users/" + userId + "/Items/" + parentId + "/Artists", options);
+
+            return self.ajax({
+                type: "GET",
+                url: url,
+                dataType: "json"
+            });
+        };
+
+        /**
             Gets genres from an item
         */
         self.getGenres = function (userId, options) {
@@ -1851,6 +1927,28 @@ MediaBrowser.ApiClient = function ($, navigator, JSON, WebSocket, setTimeout) {
             }
 
             var url = self.getUrl("Users/" + userId + "/Genres/" + encodeName(name) + "/Counts");
+
+            return self.ajax({
+                type: "GET",
+                url: url,
+                dataType: "json"
+            });
+        };
+
+        /**
+            Gets a variety of item counts that an artist appears in
+        */
+        self.getArtistItemCounts = function (userId, name) {
+
+            if (!userId) {
+                throw new Error("null userId");
+            }
+
+            if (!name) {
+                throw new Error("null name");
+            }
+
+            var url = self.getUrl("Users/" + userId + "/Artists/" + encodeName(name) + "/Counts");
 
             return self.ajax({
                 type: "GET",
