@@ -539,7 +539,7 @@ MediaBrowser.ApiClient = function ($, navigator, JSON, WebSocket, setTimeout) {
 
         self.getNextUpEpisodes = function (options) {
 
-            var url = self.getUrl("Shows/NextUp" + options);
+            var url = self.getUrl("Shows/NextUp", options);
 
             return self.ajax({
                 type: "GET",
