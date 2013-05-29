@@ -2639,7 +2639,7 @@ MediaBrowser.ApiClient = function ($, navigator, JSON, WebSocket, setTimeout) {
                 throw new Error("null options");
             }
 
-            var url = self.getUrl("Sessions/" + sessionId + "/Viewing/", options);
+            var url = self.getUrl("Sessions/" + sessionId + "/Viewing", options);
 
             return self.ajax({
                 type: "POST",
@@ -2657,7 +2657,7 @@ MediaBrowser.ApiClient = function ($, navigator, JSON, WebSocket, setTimeout) {
                 throw new Error("null options");
             }
 
-            var url = self.getUrl("Sessions/" + sessionId + "/Playing/", options);
+            var url = self.getUrl("Sessions/" + sessionId + "/Playing", options);
 
             return self.ajax({
                 type: "POST",
