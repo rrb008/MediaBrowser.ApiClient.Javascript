@@ -443,6 +443,96 @@ MediaBrowser.ApiClient = function ($, navigator, JSON, WebSocket, setTimeout) {
             });
         };
 
+        self.refreshArtist = function (name, force) {
+
+            if (!itemId) {
+                throw new Error("null name");
+            }
+
+            var url = self.getUrl("Artists/" + itemId + "/Refresh", {
+
+                forced: force || false
+
+            });
+
+            return self.ajax({
+                type: "POST",
+                url: url
+            });
+        };
+
+        self.refreshGenre = function (name, force) {
+
+            if (!itemId) {
+                throw new Error("null name");
+            }
+
+            var url = self.getUrl("Genres/" + itemId + "/Refresh", {
+
+                forced: force || false
+
+            });
+
+            return self.ajax({
+                type: "POST",
+                url: url
+            });
+        };
+
+        self.refreshMusicGenre = function (name, force) {
+
+            if (!itemId) {
+                throw new Error("null name");
+            }
+
+            var url = self.getUrl("MusicGenres/" + itemId + "/Refresh", {
+
+                forced: force || false
+
+            });
+
+            return self.ajax({
+                type: "POST",
+                url: url
+            });
+        };
+
+        self.refreshPerson = function (name, force) {
+
+            if (!itemId) {
+                throw new Error("null name");
+            }
+
+            var url = self.getUrl("Persons/" + itemId + "/Refresh", {
+
+                forced: force || false
+
+            });
+
+            return self.ajax({
+                type: "POST",
+                url: url
+            });
+        };
+
+        self.refreshStudio = function (name, force) {
+
+            if (!itemId) {
+                throw new Error("null name");
+            }
+
+            var url = self.getUrl("Studios/" + itemId + "/Refresh", {
+
+                forced: force || false
+
+            });
+
+            return self.ajax({
+                type: "POST",
+                url: url
+            });
+        };
+
         /**
          * Installs or updates a new plugin
          */
