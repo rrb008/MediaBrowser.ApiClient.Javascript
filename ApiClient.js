@@ -445,7 +445,7 @@ MediaBrowser.ApiClient = function ($, navigator, JSON, WebSocket, setTimeout) {
 
         self.refreshArtist = function (name, force) {
 
-            if (!itemId) {
+            if (!name) {
                 throw new Error("null name");
             }
 
@@ -463,7 +463,7 @@ MediaBrowser.ApiClient = function ($, navigator, JSON, WebSocket, setTimeout) {
 
         self.refreshGenre = function (name, force) {
 
-            if (!itemId) {
+            if (!name) {
                 throw new Error("null name");
             }
 
@@ -481,7 +481,7 @@ MediaBrowser.ApiClient = function ($, navigator, JSON, WebSocket, setTimeout) {
 
         self.refreshMusicGenre = function (name, force) {
 
-            if (!itemId) {
+            if (!name) {
                 throw new Error("null name");
             }
 
@@ -499,7 +499,7 @@ MediaBrowser.ApiClient = function ($, navigator, JSON, WebSocket, setTimeout) {
 
         self.refreshPerson = function (name, force) {
 
-            if (!itemId) {
+            if (!name) {
                 throw new Error("null name");
             }
 
@@ -517,7 +517,7 @@ MediaBrowser.ApiClient = function ($, navigator, JSON, WebSocket, setTimeout) {
 
         self.refreshStudio = function (name, force) {
 
-            if (!itemId) {
+            if (!name) {
                 throw new Error("null name");
             }
 
