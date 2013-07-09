@@ -10,8 +10,9 @@ MediaBrowser.ApiClient = function ($, navigator, JSON, WebSocket, setTimeout) {
      * @param {String} serverHostName
      * @param {String} serverPortNumber
      * @param {String} clientName 
+     * @param {String} applicationVersion 
      */
-    return function (serverProtocol, serverHostName, serverPortNumber, clientName) {
+    return function (serverProtocol, serverHostName, serverPortNumber, clientName, applicationVersion) {
 
         if (!serverProtocol) {
             throw new Error("Must supply a serverProtocol, e.g. http:");
@@ -120,7 +121,7 @@ MediaBrowser.ApiClient = function ($, navigator, JSON, WebSocket, setTimeout) {
 
             if (clientName) {
 
-                var auth = 'MediaBrowser Client="' + clientName + '", Device="' + deviceName + '", DeviceId="' + deviceId + '"';
+                var auth = 'MediaBrowser Client="' + clientName + '", Device="' + deviceName + '", DeviceId="' + deviceId + '", Version="' + applicationVersion + '"';
 
                 if (currentUserId) {
                     auth += ', UserId="' + currentUserId + '"';
