@@ -3278,11 +3278,11 @@ MediaBrowser.ApiClient = function ($, navigator, JSON, WebSocket, setTimeout) {
 /**
  * Provides a friendly way to create an api client instance using information from the browser's current url
  */
-MediaBrowser.ApiClient.create = function (clientName) {
+MediaBrowser.ApiClient.create = function (clientName, applicationVersion) {
 
     var loc = window.location;
 
-    return new MediaBrowser.ApiClient(loc.protocol, loc.hostname, loc.port, clientName);
+    return new MediaBrowser.ApiClient(loc.protocol, loc.hostname, loc.port, clientName, applicationVersion);
 };
 
 /**
